@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import "../globals.css";
+import Image from "next/image";
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,10 +24,13 @@ export default function Navbar() {
       <div className="flex items-center justify-between p-4 px-6">
         {/* Logo */}
         <div className="flex items-center">
-          <img
+        <Image
             src="/logo.png"
             alt="Logo"
-            className="h-20 w-auto "
+            width={80}
+            height={80}
+            className="w-auto h-20"
+            priority
           />
         </div>
 
@@ -59,7 +64,7 @@ export default function Navbar() {
           </div>
 
           {/* Nav items */}
-          <nav className="flex flex-col items-center space-y-6 text-white text-2xl mt-8">
+          <nav className="flex flex-col items-center space-y-6 text-white text-2xl mt-8 bg-black/80 backdrop-blur-md ">
             {navItems.map((item) => (
               <Link
                 key={item.name}

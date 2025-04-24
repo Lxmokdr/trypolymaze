@@ -1,12 +1,15 @@
+import Image from 'next/image';
 export default function Content() {
     return (
       <div className="absolute inset-0 w-full h-full">
         {/* Background image */}
-        <img
-          src={"/bgmaze.png"}
-          alt="Background Maze"
-          className="object-cover w-full h-full opacity-5"
-        />
+        <Image
+                        src="/bgmaze.png"
+                        alt="Background Maze"
+                        fill
+                        className="object-cover opacity-5 z-0"
+                        priority
+                      />
   
         {/* Centered content */}
         <div className="absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 text-center top-45 pl-20 lg:w-9/10 left-1/20">
