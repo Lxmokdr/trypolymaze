@@ -25,7 +25,7 @@ export default function ImageSwiper() {
         spaceBetween={20}
         pagination={{ clickable: true }}
         autoplay={{
-          delay: 500, // No delay between slides
+          delay: 1000, // No delay between slides
           disableOnInteraction: false, // Keep autoplay running even after interaction
         }}
         loop={true}

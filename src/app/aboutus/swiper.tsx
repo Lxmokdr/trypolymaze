@@ -25,7 +25,7 @@ export default function ImageSwiper() {
         spaceBetween={20}
         pagination={{ clickable: true }}
         autoplay={{
-          delay: 2500,
+          delay: 800,
           disableOnInteraction: false,
         }}
         loop={true}

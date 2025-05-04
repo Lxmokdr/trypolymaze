@@ -37,7 +37,7 @@ body {
 }
 
 .navLink:hover {
-  color: #383838;
+  color: #797979;
 }
 /* Add animated underline to the links */
 .navLink::after {
@@ -47,7 +47,7 @@ body {
   left: 0;
   width: 0;
   height: 3px; /* Thickness of the underline */
-  background-color: #383838; /* Underline color */
+  background-color: #797979; /* Underline color */
   transition: width 0.3s ease; /* Animation duration */
 }
 /* On hover, expand the underline */
