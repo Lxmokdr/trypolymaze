@@ -1,14 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import "../globals.css";
 import Image from "next/image";
-
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", href: "/home" },
@@ -19,65 +29,127 @@ export default function Navbar() {
     { name: "About us", href: "/aboutus" },
   ];
 
+  // Animation variants
+  const navVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <header className="fixed top-0 w-full z-50 bg-black bg-opacity-80 backdrop-blur-md">
+    <motion.header
+      initial="hidden"
+      animate="visible"
+      variants={navVariants}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-md shadow-lg"
+          : "bg-black/80 backdrop-blur-sm"
+      }`}
+    >
       <div className="flex items-center justify-between p-4 px-6">
         {/* Logo */}
-        <div className="flex items-center">
-        <Image
-            src="/logo.png"
-            alt="Logo"
-            width={80}
-            height={80}
-            className="w-auto h-20"
-            priority
-          />
-        </div>
+        <motion.div className="flex items-center" variants={itemVariants}>
+          <Link href="/home">
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Image
+                src="/logo.png"
+                alt="Logo"
+                width={80}
+                height={80}
+                className="w-auto h-20"
+                priority
+              />
+            </motion.div>
+          </Link>
+        </motion.div>
 
         {/* Desktop Nav */}
-        <nav className="hidden lg:flex space-x-8 text-white text-2xl justify-between w-3/4 ">
+        <motion.nav
+          className="hidden lg:flex space- text-white text-sl justify-between w-3/4"
+          variants={navVariants}
+        >
           {navItems.map((item) => (
-            <Link key={item.name} href={item.href} className="navLink">
-              {item.name}
-            </Link>
+            <motion.div key={item.name} variants={itemVariants}>
+              <Link href={item.href} className="navLink">
+                {item.name}
+              </Link>
+            </motion.div>
           ))}
-        </nav>
+        </motion.nav>
 
         {/* Mobile Menu Button */}
-        <button
+        <motion.button
+          variants={itemVariants}
           className="lg:hidden text-white"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        </motion.button>
       </div>
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="lg:hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex flex-col"
+        >
           {/* Close button */}
           <div className="flex justify-end p-4">
-            <button onClick={() => setIsOpen(false)} aria-label="Close menu">
+            <motion.button
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
               <X size={28} className="text-white" />
-            </button>
+            </motion.button>
           </div>
 
           {/* Nav items */}
-          <nav className="flex flex-col items-center space-y-6 text-white text-2xl mt-8 bg-black/80 backdrop-blur-md ">
-            {navItems.map((item) => (
-              <Link
+          <motion.nav
+            className="flex flex-col items-center space-y-6 text-white text-2xl mt-8"
+            initial="hidden"
+            animate="visible"
+            variants={navVariants}
+          >
+            {navItems.map((item, index) => (
+              <motion.div
                 key={item.name}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className="navLink"
+                variants={itemVariants}
+                custom={index}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {item.name}
-              </Link>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="navLink"
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
-          </nav>
-        </div>
+          </motion.nav>
+        </motion.div>
       )}
-    </header>
+    </motion.header>
   );
 }

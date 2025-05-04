@@ -12,6 +12,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -22,13 +26,13 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Gilroy';
+  font-family: "Gilroy";
 }
 
 .navLink {
   text-decoration: none;
   text-align: center;
-  color: white; 
+  color: white;
   font-size: 1.5rem;
   padding: 1rem 0;
   transition: background-color 0.3s;
@@ -56,21 +60,26 @@ body {
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Regular.ttf') format('truetype');
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Orbitron';
-  src: url('/fonts/orbitron-medium.otf') format('truetype');
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron-medium.otf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
-button , h1 , h2 ,.navLink {
-  font-family: 'Orbitron';
+button,
+h1,
+h2,
+.navLink {
+  /* font-family: "Orbitron"; */
+  font-family: "Gilroy";
+  font-weight: 900;
 }
 
 @keyframes subtleGlow {
@@ -88,7 +97,7 @@ button , h1 , h2 ,.navLink {
 .animate-subtle-glow {
   animation: subtleGlow 2s infinite ease-in-out;
 }
-body{
+body {
   color: #ffffff;
 }
 
@@ -102,4 +111,227 @@ body{
   justify-content: center;
   align-items: center;
   font-size: 24px;
+}
+
+/* Page Transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Enhanced glow effects */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.7),
+      0 0 50px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.glow-effect {
+  animation: glow 3s infinite ease-in-out;
+}
+
+/* Text gradient animation */
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.text-gradient {
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #ffffff, #a0a0a0, #ffffff);
+  animation: textGradient 3s linear infinite;
+}
+
+/* Enhanced button effects */
+.button-hover {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.button-hover:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.button-hover:hover:before {
+  left: 100%;
+}
+
+/* Improved navbar styling */
+.navLink {
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  padding: 1rem 0;
+  transition: background-color 0.3s;
+  position: relative;
+  text-decoration: none;
+}
+
+.navLink:hover {
+  color: #797979;
+}
+/* Add animated underline to the links */
+.navLink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px; /* Adjust for spacing between text and underline */
+  left: 0;
+  width: 0;
+  height: 3px; /* Thickness of the underline */
+  background-color: #797979; /* Underline color */
+  transition: width 0.3s ease; /* Animation duration */
+}
+/* On hover, expand the underline */
+.navLink:hover::after {
+  width: 100%; /* Full width of the link */
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron-medium.otf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+button,
+h1,
+h2,
+.navLink {
+  /* font-family: "Orbitron"; */
+  font-family: "Gilroy";
+  font-weight: 900;
+}
+
+@keyframes subtleGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+.animate-subtle-glow {
+  animation: subtleGlow 2s infinite ease-in-out;
+}
+body {
+  color: #ffffff;
+}
+
+.page {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+/* Card styling */
+.card-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Global content spacing */
+.content-container {
+  padding-top: 7rem;
+}
+
+.absolute-content {
+  margin-top: 12rem;
 }

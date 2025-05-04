@@ -1,45 +1,133 @@
-import Image from 'next/image';
+"use client";
+
+import Image from "next/image";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Content from "../polymaze/content";
+
 export default function Homepage() {
-    return (
-      <div className="absolute inset-0 w-full h-full">
-        {/* Background image */}
+  return (
+    <div className="absolute inset-0 w-full h-full">
+      {/* Background image with subtle animation */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.05 }}
+        transition={{ duration: 1.5 }}
+        className="absolute inset-0 z-0"
+      >
         <Image
-                src="/bgmaze.png"
-                alt="Background Maze"
-                fill
-                className="object-cover opacity-5 z-0"
-                priority
-              />
-  
-        {/* Centered content */}
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-4 text-center">
-          {/* Glowing overlay box with custom animation */}
-          <div className="bg-black bg-opacity-70 text-white p-6 py-10 px-24 rounded-3xl animate-subtle-glow transition-shadow duration-1000 mt-10">
-            <h1 className="text-2xl md:text-5xl font-bold text-white">POLYMAZE</h1>
-            <h1 className="text-2xl md:text-5xl font-bold text-white">is here!</h1>
-          </div>
-  
-          {/* Description text */}
-          <div className="mt-6 max-w-3xl">
-            <p className="text-white text-xl md:text-2xl mb-4">
-              Design and build a robot using your skills in mechanics, electronics, robotics, and automation to conquer a complex maze filled with tricky paths and surprise turns.
-            </p>
-            <p className="text-white text-xl md:text-2xl font-semibold">
-              The Maze is a Beast!
-            </p>
-          </div>
-  
-          {/* Buttons */}
-          <div className="flex justify-center gap-4 mt-4 flex-wrap">
-            <button className="bg-white text-black py-4 px-10 rounded-xl text-l md:text-xl hover:bg-[#797979]">
+          src="/bgmaze.png"
+          alt="Background Maze"
+          fill
+          className="object-cover"
+          priority
+        />
+      </motion.div>
+
+      {/* Centered content - Added mt-24 for top spacing */}
+      <div className="content-container absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-4 text-center">
+        {/* Enhanced hero section with larger text and better animation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.2,
+            type: "spring",
+            stiffness: 100,
+          }}
+          className="bg-black bg-opacity-70 text-white p-10 py-16 px-24 rounded-3xl shadow-2xl border border-white/20 backdrop-blur-md max-w-4xl w-full"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-7xl font-bold text-white mb-2 tracking-wider">
+              POLYMAZE
+            </h1>
+            <motion.div
+              initial={{ width: "0%" }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1.2, delay: 1.5 }}
+              className="h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-4"
+            />
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.8 }}
+              className="text-3xl md:text-6xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white"
+            >
+              is here!
+            </motion.h1>
+          </motion.div>
+        </motion.div>
+
+        {/* Description text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 2.2 }}
+          className="mt-6 max-w-3xl"
+        >
+          <p className="text-white text-xl md:text-2xl mb-4">
+            Design and build a robot using your skills in mechanics,
+            electronics, robotics, and automation to conquer a complex maze
+            filled with tricky paths and surprise turns.
+          </p>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: [0, 1, 0.7, 1],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{
+              duration: 3,
+              delay: 2.2,
+              repeat: Infinity,
+              repeatDelay: 2,
+            }}
+            className="text-white text-xl md:text-3xl font-semibold"
+          >
+            The Maze is a Beast!
+          </motion.p>
+        </motion.div>
+
+        {/* Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 2.2 }}
+          className="flex justify-center gap-6 mt-2 flex-wrap"
+        >
+          <Link href="/participate">
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-white text-black py-5 px-12 rounded-xl text-xl md:text-2xl font-medium transition-all duration-300 hover:bg-gray-200"
+            >
               Register Now
-            </button>
-            <button className="bg-black text-white py-4 px-10 rounded-xl border border-white text-l md:text-xl hover:text-[#797979]  hover:border-[#797979] ">
+            </motion.button>
+          </Link>
+          <Link href="/polymaze">
+            <motion.button
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 15px rgba(255, 255, 255, 0.3)",
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="bg-transparent text-white py-5 px-12 rounded-xl border-2 border-white text-xl md:text-2xl font-medium transition-all duration-300 hover:border-gray-300 hover:text-gray-300"
+            >
               Learn More
-            </button>
-          </div>
-        </div>
+            </motion.button>
+          </Link>
+        </motion.div>
       </div>
-    );
-  }
-  
+
+      {/* Bottom section with logo */}
+    </div>
+  );
+}

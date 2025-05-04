@@ -1,8 +1,9 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
-import Image from 'next/image';
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Content() {
   const questions = [
@@ -27,7 +28,8 @@ export default function Content() {
         "We are pleased to confirm that we offer workshops for POLYMAZE participants, and it is going to be led by skilled trainers.",
     },
     {
-      question: "How can I find out if I've been accepted to compete in POLYMAZE?",
+      question:
+        "How can I find out if I've been accepted to compete in POLYMAZE?",
       answer:
         "All POLYMAZE applicants are going to receive an email about their acceptance status after the registration form closes.",
     },
@@ -40,7 +42,12 @@ export default function Content() {
   };
 
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="absolute inset-0 w-full h-full"
+    >
       {/* Background image */}
       <Image
         src="/bgmaze.png"
@@ -51,11 +58,30 @@ export default function Content() {
       />
 
       {/* Centered content */}
-      <div className="absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 pt-50 pl-20 lg:w-11/12">
-        <h1 className="text-5xl font-bold text-white">Frequently Asked Questions</h1>
-        <div className="w-full space-y-4">
+      <div className="absolute-content absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 pl-20 lg:w-11/12 overflow-y-auto">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="text-5xl font-bold text-white mt-24 mb-6"
+        >
+          Frequently Asked Questions
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="w-full space-y-4"
+        >
           {questions.map((item, index) => (
-            <div key={index} className="border border-white p-4 rounded-xl bg-white/5">
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="border border-white p-4 rounded-xl bg-black/30 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 card-effect"
+            >
               <div
                 className="flex justify-between items-center cursor-pointer"
                 onClick={() => toggle(index)}
@@ -63,22 +89,33 @@ export default function Content() {
                 <p className="text-white text-base sm:text-lg md:text-2xl font-semibold">
                   {item.question}
                 </p>
-                <ChevronDown
-                  className={`text-white transition-transform duration-300 ${
-                    openIndex === index ? 'rotate-180' : 'rotate-0'
-                  }`}
-                  size={28}
-                />
+                <motion.div
+                  animate={{ rotate: openIndex === index ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ChevronDown className="text-white" size={28} />
+                </motion.div>
               </div>
-              {openIndex === index && (
-                <p className="mt-4 text-white text-sm sm:text-base md:text-lg lg:text-xl text-start transition-all duration-500 ease-in-out">
-                  {item.answer}
-                </p>
-              )}
-            </div>
+
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <p className="mt-4 text-white text-sm sm:text-base md:text-lg lg:text-xl text-start">
+                      {item.answer}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
