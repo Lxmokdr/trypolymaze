@@ -60,20 +60,17 @@ export default function Navbar() {
     >
       <div className="flex items-center justify-between p-4 px-6">
         {/* Logo */}
-        <motion.div className="flex items-center" variants={itemVariants}>
-          <Link href="/home">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Image
-                src="/logo.png"
-                alt="Logo"
-                width={80}
-                height={80}
-                className="w-auto h-20"
-                priority
-              />
-            </motion.div>
-          </Link>
-        </motion.div>
+        <div className="flex items-center">
+        <Image
+          src="/logo.png"
+          alt="Logo"
+          width={80}
+          height={80}
+          className="h-10 md:h-15 w-auto " // h-16 on small screens, h-20 on sm and up
+          priority
+        />
+
+        </div>
 
         {/* Desktop Nav */}
         <motion.nav
