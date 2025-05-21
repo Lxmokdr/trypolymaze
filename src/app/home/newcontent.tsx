@@ -83,7 +83,7 @@ export default function Hero() {
           <ModelViewer />
         </motion.div>
       </motion.div>
-              <div className="absolute bottom-10 left-10 text-white text-sm">
+              <div className="absolute bottom-5 left-5 text-white text-sm">
           <span className="font-bold text-lg">01</span> / 05
         </div>
     </section>
