@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^10.0.8",
+    "@react-three/fiber": "^9.1.2",
     "framer-motion": "^12.10.4",
     "jquery": "^3.7.1",
     "lucide-react": "^0.503.0",
@@ -16,8 +18,11 @@
     "page-flip": "github:Nodlik/StPageFlip",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.6.0",
     "swiper": "^11.2.6",
-    "turn.js": "^1.0.5"
+    "three": "^0.176.0",
+    "three-stdlib": "^2.36.0",
+    "turn.js": "^1.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -25,6 +30,7 @@
     "@types/node": "20.17.32",
     "@types/react": "19.1.2",
     "@types/react-dom": "^19",
+    "@types/three": "^0.176.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.1",
     "tailwindcss": "^4",

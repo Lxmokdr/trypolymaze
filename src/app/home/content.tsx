@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Content from "../polymaze/content";
+import ModelViewer from "./3d";
 
 export default function Homepage() {
   return (
@@ -125,9 +125,11 @@ export default function Homepage() {
             </motion.button>
           </Link>
         </motion.div>
+        <ModelViewer />
       </div>
 
       {/* Bottom section with logo */}
+      
     </div>
   );
 }

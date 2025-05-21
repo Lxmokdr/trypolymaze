@@ -1,7 +1,6 @@
 'use client';
 
 import CardStack from './cards';
-import ImageSwiper from './swiper';
 import Image from 'next/image';
 
 export default function Content() {
@@ -27,7 +26,6 @@ export default function Content() {
           such as: Polymaze, Ignite, Engineer&apos;s Gala, Charity, and so on.
         </p>  
 
-        {/* Horizontal slider or card stack */}
         {/* <ImageSwiper /> */}
         <CardStack />
       </div>

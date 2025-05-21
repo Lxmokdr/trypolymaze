@@ -335,3 +335,16 @@ body {
 .absolute-content {
   margin-top: 12rem;
 }
+/* Optional enhancements */
+.navLin span {
+  transition: all 0.3s ease;
+}
+
+.navLin:hover span {
+  transform: scale(1.25);
+}
+
+.font{
+  font-family: "Orbitron";
+  font-weight: 900;
+}
