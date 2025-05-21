@@ -48,9 +48,10 @@ export default function Content() {
         </div>
         <ImageSwiper />
       </div>
-              <div className="absolute bottom-5 left-5 text-white text-xl font">
-          <span className="font-bold text-4xl">02</span> / 06
-        </div>
+<div className="fixed bottom-5 left-5 text-white text-xl font z-50">
+  <span className="font-bold text-4xl">01</span> / 06
+</div>
+
     </div>
   );
 }
