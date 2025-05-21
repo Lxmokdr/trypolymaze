@@ -122,7 +122,7 @@ export default function Navbar() {
 
           {/* Nav items */}
           <motion.nav
-            className="flex flex-col items-center space-y-6 text-white text-2xl mt-8"
+            className="flex flex-col items-center space-y-6 text-white text-2xl mt-8 bg-black/80 backdrop-blur-md "
             initial="hidden"
             animate="visible"
             variants={navVariants}
