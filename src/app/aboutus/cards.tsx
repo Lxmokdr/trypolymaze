@@ -31,21 +31,15 @@ const cardData = [
     title: 'Gamecraft',
     text: 'Game Craft is a local game jam hosted by VIC ENP each year inspired by Game Jam...',
     logo: '/gamecraft.png',
-    image: '/young.jpg',
+    image: '/gc.jpg',
   },
-  {
-    id: 5,
-    title: 'Masterclass',
-    text: 'The MasterClass is a series of training sessions and workshops that goes online during the summer...',
-    logo: '/masterclass.png',
-    image: '/young.jpg',
-  },
+
   {
     id: 6,
     title: 'Spelling Bee',
     text: 'Spelling Bee is an international competition in which participants must spell a wide selection of words...',
     logo: '/spellingbee.png',
-    image: '/spelling.jpg',
+    image: '/spelling.png',
   },
 ];
 

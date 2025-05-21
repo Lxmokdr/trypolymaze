@@ -6,7 +6,8 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 
 const Model = () => {
   const gltf = useGLTF("/3d.glb");
-  return <primitive object={gltf.scene} />;
+  // Increase the scale of the model directly
+  return <primitive object={gltf.scene} scale={1.35} />; // Was 1.2, now 1.35 (or try 1.4, 1.5)
 };
 
 const ModelViewer = () => {
@@ -15,40 +16,22 @@ const ModelViewer = () => {
       <style>
         {`
           .model-container {
-            position: fixed;
+            position: absolute;
             top: 0;
-            left: -390px;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9999;
-          }
-
-          /* Responsive adjustments */
-          @media (max-width: 1200px) {
-            .model-container {
-              left: -150px; /* reduce offset on medium screens */
-            }
-          }
-
-          @media (max-width: 768px) {
-            .model-container {
-              left: -50px; /* smaller offset on tablets */
-            }
-          }
-
-          @media (max-width: 480px) {
-            .model-container {
-              left: 0; /* no offset on small/mobile screens */
-              width: 100vw;
-            }
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
           }
         `}
       </style>
 
       <div className="model-container">
-        <Canvas camera={{ position: [0, 1, 5], fov: 60 }}>
-          <ambientLight intensity={0.6} />
-          <directionalLight position={[0, 3, 10]} />
+        {/* Option: Adjust camera FOV or Z position for a different "zoom" effect */}
+        {/* e.g., <Canvas camera={{ position: [0, 1, 4.5], fov: 55 }}> */}
+        <Canvas camera={{ position: [0, 1, 3], fov: 60 }}> {/* Current default */}
+          <ambientLight intensity={1.5} />
+          <directionalLight position={[0, 3, 10]} intensity={2} />
           <Suspense fallback={null}>
             <Model />
           </Suspense>

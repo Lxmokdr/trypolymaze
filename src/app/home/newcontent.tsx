@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import ModelViewer from "./3d";
+import ModelViewer from "./3d"; // Assuming 3d.js is in the same directory
 import { motion } from "framer-motion";
 
 export default function Hero() {
@@ -13,14 +13,14 @@ export default function Hero() {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-[60%] bg-black/80 text-white flex flex-col justify-center px-10 md:px-20 py-10 relative z-0"
+        className="w-full md:w-[60%] bg-[#0D0D0D] text-white flex flex-col justify-center px-6 sm:px-10 md:px-20 py-10 relative z-10"
       >
         <Image
-          src="/logo1.png"
+          src="/logo.png"
           alt="Polymaze Logo"
           width={500}
           height={100}
-          className="mb-10"
+          className="mb-10 w-auto h-auto max-w-[300px] md:max-w-[400px]"
         />
 
         {/* Mobile Model Viewer (below logo) */}
@@ -30,33 +30,27 @@ export default function Hero() {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="w-full flex justify-center items-center"
           >
-            <div className="w-[70%] max-w-[300px]">
+            <div className="relative w-[70%] max-w-[300px] h-[200px] sm:h-[250px]">
               <ModelViewer />
             </div>
           </motion.div>
         </div>
 
-        <div className="flex flex-row items-start ml-10">
-          {/* White vertical rectangle */}
-          <div className="bg-white/50 w-2 h-full mr-4"></div>
-
-          {/* Title and Subtitle */}
+        <div className="flex flex-row items-start ml-4 sm:ml-10">
+          <div className="bg-white w-1.5 h-auto self-stretch mr-3 sm:mr-4"></div>
           <div className="text-start">
-            <p className="uppercase text-white text-3xl font">
-              <b>Polymaze</b> is here!
+            <p className="uppercase text-white text-2xl sm:text-3xl font-bold">
+              Polymaze is here!
             </p>
-            <p className="text-white/80 text-2xl">
+            <p className="text-white/80 text-xl sm:text-2xl">
               To throw down the gauntlet for robotics enthusiasts.
             </p>
           </div>
         </div>
 
+        <div className="mb-4 ml-4 sm:ml-10"></div>
 
-        <div className="mb-4 ml-10">
-
-        </div>
-
-        <p className=" text-white/70 max-w-md mb-8 ml-10 text-xl" >
+        <p className="text-white/70 max-w-md mb-8 ml-4 sm:ml-10 text-lg sm:text-xl">
           Test your skills in mechanics, electronics, robotics and automatics to
           design and build a robot that can take on a challenging maze competed
           with intricate pathways and unexpected turns.
@@ -69,35 +63,43 @@ export default function Hero() {
               boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="font bg-black text-white py-4 px-10 border border-white text-lg md:text-xl font-medium transition-all duration-300 hover:bg-white hover:text-black ml-10"
+            className="font-semibold bg-black text-white py-3 px-8 sm:py-4 sm:px-10 border border-white text-base sm:text-lg md:text-xl transition-all duration-300 hover:bg-white hover:text-black ml-4 sm:ml-10"
           >
             Register Now
           </motion.button>
         </Link>
-
-
       </motion.div>
 
-      {/* Right White Section */}
-      <div className="hidden md:block w-[40%] bg-white relative z-0 mr-[32%]" />
-
-      {/* Desktop Model Viewer (absolute positioning) */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1.8 }}
-        transition={{ delay: 0.2, duration: 1 }}
-        className="hidden md:flex absolute top-10 bottom-0 left-[60%] -translate-x-1/2 w-full md:w-[80%] max-w-[1000px] z-20 pointer-events-none items-center justify-center"
-      >
+      {/* Right Section */}
+      <div className="hidden md:block md:w-[40%] relative mt-20">
         <motion.div
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full max-h-[600px] flex items-center justify-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 1 }}
+          className="
+            absolute
+
+            rounded-2xl
+
+            z-10
+            pointer-events-auto
+            h-[50vh]
+            w-[80%]
+            max-w-[600px]
+            top-[20vh]
+            left-0
+            -translate-x-1/2
+          "
         >
-          <ModelViewer />
+          <motion.div
+            animate={{ y: [0, -20, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-full h-full relative"
+          >
+            <ModelViewer />
+          </motion.div>
         </motion.div>
-      </motion.div>
-
-
+      </div>
     </section>
   );
 }

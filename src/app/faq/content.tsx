@@ -19,7 +19,7 @@ export default function Content() {
     {
       question: "Do all team members need to fill the form?",
       answer:
-        "No, you just need to assign one member of your team to fill it out.",
+        "Yes, each member must fill out the form. Only one creates the team; others join by entering the exact team name.",
     },
     {
       question: "Are there any pre-competition workshops scheduled?",

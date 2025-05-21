@@ -8,7 +8,7 @@ import Testimonies from "./testimonies/page";
 
 export default function Home() {
   return (
-    <div className="bg-black">
+    <div className="bg-[#0D0D0D]">
       <Nav />
       <Homepagee/>
       < Polymaze/>
