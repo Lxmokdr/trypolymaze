@@ -1,46 +1,56 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import "../globals.css";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+
+const navItems = [
+  { name: "Home", href: "#home" },
+  { name: "POLYMAZE", href: "#polymaze" },
+  { name: "Participate", href: "#participate" },
+  { name: "Testimonies", href: "#testimonies" },
+  { name: "FAQ", href: "#faq" },
+  { name: "About us", href: "#aboutus" },
+];
 
 export default function Nav() {
-  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            if (id) {
+              setActiveSection(id);
+            }
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.3, // lower threshold for better triggering
+      }
+    );
+
+    navItems.forEach((item) => {
+      const el = document.querySelector(item.href);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
-
-  const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "POLYMAZE", href: "#polymaze" },
-    { name: "Participate", href: "#participate" },
-    { name: "Testimonies", href: "#testimonies" },
-    { name: "FAQ", href: "#faq" },
-    { name: "About us", href: "#aboutus" },
-  ];
-
-  const navVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0 },
-  };
 
   return (
     <>
@@ -49,9 +59,9 @@ export default function Nav() {
         <div className="relative flex flex-col items-end justify-center h-full space-y-10 text-white pr-6">
           <div className="absolute inset-y-0 right-4 w-px bg-white/80" />
           {navItems.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = activeSection === item.href.replace("#", "");
             return (
-              <Link
+              <a
                 href={item.href}
                 key={item.name}
                 className="relative group flex items-center space-x-4"
@@ -72,7 +82,7 @@ export default function Nav() {
                       : "bg-white/30 group-hover:bg-white"
                   }`}
                 />
-              </Link>
+              </a>
             );
           })}
         </div>
@@ -80,9 +90,9 @@ export default function Nav() {
 
       {/* Mobile Top Navbar */}
       <motion.header
-        initial="hidden"
-        animate="visible"
-        variants={navVariants}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
         className={`md:hidden fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
           scrolled
             ? "bg-black/90 backdrop-blur-md shadow-lg"
@@ -99,7 +109,6 @@ export default function Nav() {
             />
           </div>
           <motion.button
-            variants={itemVariants}
             className="text-white"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -135,20 +144,19 @@ export default function Nav() {
           {/* Mobile Nav Items */}
           <motion.nav
             className="flex flex-col items-center space-y-6 text-white text-2xl mt-8"
-            initial="hidden"
-            animate="visible"
-            variants={navVariants}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.4 }}
           >
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = activeSection === item.href.replace("#", "");
               return (
                 <motion.div
                   key={item.name}
-                  variants={itemVariants}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link
+                  <a
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     className={`${
@@ -158,7 +166,7 @@ export default function Nav() {
                     }`}
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 </motion.div>
               );
             })}

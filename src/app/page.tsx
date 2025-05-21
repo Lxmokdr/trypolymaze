@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="bg-black">
       <Nav />
-      <Homepagee />
+      <Homepagee/>
       < Polymaze/>
       <Participate/>
       <Testimonies/>

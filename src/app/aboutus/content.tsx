@@ -4,7 +4,7 @@ import CardStack from './cards';
 
 export default function Content() {
   return (
-    <div className=" min-h-screen w-full overflow-hidden mt-30 md:mt-0">
+    <div id='aboutus' className=" min-h-screen w-full overflow-hidden mt-30 md:mt-0">
 
       {/* Scrollable content */}
       <div className=" flex flex-col px-4 pl-20  w-full  pt-24  mx-auto pr-[15%]">

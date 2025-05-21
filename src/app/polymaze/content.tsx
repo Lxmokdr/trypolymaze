@@ -1,9 +1,8 @@
 import ImageSwiper from "./swiper";
-import Image from "next/image";
 
 export default function Content() {
   return (
-    <div className="relative w-full h-screen mt-30 md:mt-0">
+    <div id="polymaze" className="relative w-full h-screen mt-30 md:mt-0">
 
 
       {/* Content */}

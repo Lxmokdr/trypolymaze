@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0">
+    <section id="home" className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0">
       {/* Left Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
@@ -38,7 +38,7 @@ export default function Hero() {
 
         <div className="flex flex-row items-start ml-10">
           {/* White vertical rectangle */}
-          <div className="bg-white w-2 h-full mr-4"></div>
+          <div className="bg-white/50 w-2 h-full mr-4"></div>
 
           {/* Title and Subtitle */}
           <div className="text-start">
