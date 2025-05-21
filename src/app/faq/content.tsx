@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Content() {
@@ -46,33 +45,18 @@ export default function Content() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="absolute inset-0 w-full h-full mt-30 md:mt-0"
+      className="w-full h-full "
     >
-      {/* Background image */}
-      {/* <Image
-        src="/bgmaze.png"
-        alt="Background Maze"
-        fill
-        className="object-cover opacity-5 z-0"
-        priority
-      /> */}
-              <Image
-                                src="/logo1.png"
-                                alt="Polymaze Logo"
-                                width={300}
-                                height={100}
-                                className="mb-10"
-                              />
 
       {/* Centered content */}
-      <div className="absolute-content absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 pl-20 lg:w-11/12 overflow-y-auto pr-[10%] ">
+      <div className="absolute-content z-10 flex flex-col items-start justify-start gap-6 px-4 pl-20 lg:w-11/12 overflow-y-auto pr-[10%] ">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl font-bold text-white mt-24 mb-6"
+          className="text-5xl font-bold text-white  mb-6"
         >
-          <div className="flex flex-row items-start ml-10 pb-15">
+          <div className="flex flex-row items-start pb-15">
             {/* White vertical rectangle */}
             <div className="bg-white w-2 h-16 mr-4"></div>
 
@@ -124,7 +108,7 @@ export default function Content() {
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <p className="mt-4 text-white text-sm sm:text-base md:text-lg lg:text-xl text-start">
+                    <p className="mt-4 text-white/70 text-sm sm:text-base md:text-lg lg:text-xl text-start">
                       {item.answer}
                     </p>
                   </motion.div>
@@ -133,11 +117,19 @@ export default function Content() {
             </motion.div>
           ))}
         </motion.div>
-<div className="fixed bottom-5 left-5 text-white text-xl font z-50">
-  <span className="font-bold text-4xl">01</span> / 06
-</div>
+
 
       </div>
+            {/* Custom scrollbar hiding */}
+      <style jsx>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </motion.div>
   );
 }

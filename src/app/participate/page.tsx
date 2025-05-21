@@ -1,10 +1,8 @@
-import Nav from "../components/nav";
 import Content from "./content";
 
-export default function Home() {
+export default function Participate() {
     return (
         <div>
-            <Nav/>
             <Content/>
         </div>
     );

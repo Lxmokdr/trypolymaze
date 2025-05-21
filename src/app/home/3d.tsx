@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 
 const Model = () => {
-  const gltf = useGLTF('/3d.glb'); // Public folder path
+  const gltf = useGLTF('/3d.glb'); 
   return <primitive object={gltf.scene} />;
 };
 
@@ -17,7 +17,7 @@ const ModelViewer = () => {
       <Suspense fallback={null}>
         <Model />
       </Suspense>
-      <OrbitControls />
+      <OrbitControls enableZoom={false} />
     </Canvas>
   );
 };

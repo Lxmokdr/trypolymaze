@@ -6,11 +6,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Pagination, Autoplay } from 'swiper/modules';
 
-import Comment from '../components/comments'; // Make sure this path is correct
+import Comment from '../components/comments'; 
 
 const slides = [
   { name: 'Youssra ghemari', image: '/young.jpg', comment: 'Polymaze was a truly unforgettable experience. From the incredible guidance we received throughout the robot-building journey to the excitement and energy of the ddya, every moment was special. The Polymaze bot was the first robot I ever built. It wasn’t just a project; it was the beginning of a journey I’ll never forget..' },
-  { name: 'Lyna bouchama', image: '/young.jpg', comment: 'Polymaze was the best experience for 2024, that marked my year and all my years as student.It was an experience full of good memories meme si on a vécu des moments de stress. Mais c’était le charme je crois. I would say gestion de stress as first thing XD especially when you don’t start working early and u have 0 experience . It was a good occasion too to link between what we learned at school comme des notions théoriques , and la pratique in this funny and competitive way. Polymaze was also a challenge and a test for teamwork, leadership and how you will engage in something you really like.' },
+  { name: 'Lyna bouchama', image: '/young.jpg', comment: 'Polymaze was the best experience for 2024, that marked my year and all my years as student.It was an experience full of good memories meme si on a vécu des moments de stress.I would say gestion de stress as first thing XD especially when you don’t start working early and u have 0 experience . It was a good occasion too to link between what we learned at school comme des notions théoriques , and la pratique in this funny and competitive way. ' },
   { name: 'Mohamed morsli', image: '/young.jpg', comment: 'Hope is the key to survive in a Maze ! in simple words, Polymaze was unexpectedly a wonderful experiance.' },
   { name: 'Lina', image: '/young.jpg', comment: 'Very intuitive and useful.hreherfberhjbervhrvruvhbrrhvjrhgirgbrughghrviur' },
   { name: 'Youssef', image: '/young.jpg', comment: 'I enjoyed using this service.fjriegrubgrghrbgryuhghrtghrjbgrigrbgrhjbrgruhbgrhgjrkgbr' },
@@ -23,7 +23,7 @@ const slides = [
 
 export default function ImageSwiper() {
   return (
-    <div className="w-full h-screen  px-4">
+    <div className="w-full px-4 flex justify-start">
       <Swiper
         slidesPerView={1}
         spaceBetween={20}
@@ -37,9 +37,9 @@ export default function ImageSwiper() {
         breakpoints={{
           640: { slidesPerView: 1.2 },
           768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          1024: { slidesPerView: 4 },
         }}
-        className="w-full h-full"
+        className="w-[80%] ml-0 self-start"
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>

@@ -1,13 +1,13 @@
 "use client";
 
-import Nav from "../components/nav";
 import Hero from "./newcontent";
 
-export default function Home() {
+
+export default function Homepagee() {
   return (
     <div className="h-screen">
-      <Nav />
       <Hero />
+
     </div>
   );
 }

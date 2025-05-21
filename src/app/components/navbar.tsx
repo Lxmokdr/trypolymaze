@@ -22,7 +22,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/home" },
-    { name: "Polymaze", href: "/polymaze" },
+    { name: "POLYMAZE", href: "/polymaze" },
     { name: "Participate", href: "/participate" },
     { name: "FAQ", href: "/faq" },
     { name: "Testimonies", href: "/testimonies" },
@@ -66,7 +66,7 @@ export default function Navbar() {
           alt="Logo"
           width={80}
           height={80}
-          className="h-10 md:h-15 w-auto " // h-16 on small screens, h-20 on sm and up
+          className="h-10 md:h-15 w-auto "
           priority
         />
 
