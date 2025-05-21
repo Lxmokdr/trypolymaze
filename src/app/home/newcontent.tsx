@@ -36,11 +36,24 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        <div className="flex flex-row items-start ml-10">
+          {/* White vertical rectangle */}
+          <div className="bg-white w-2 h-full mr-4"></div>
+
+          {/* Title and Subtitle */}
+          <div className="text-start">
+            <p className="uppercase text-white text-3xl font">
+              <b>Polymaze</b> is here!
+            </p>
+            <p className="text-white/80 text-2xl">
+              To throw down the gauntlet for robotics enthusiasts.
+            </p>
+          </div>
+        </div>
+
+
         <div className="mb-4 ml-10">
-          <p className="uppercase text-white font-bold text-3xl">Polymaze is here!</p>
-          <p className="text-white/80  text-2xl">
-            To throw down the gauntlet for robotics enthusiasts.
-          </p>
+
         </div>
 
         <p className=" text-white/70 max-w-md mb-8 ml-10 text-xl" >
@@ -56,7 +69,7 @@ export default function Hero() {
               boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="bg-black text-white py-4 px-10 border border-white text-lg md:text-xl font-medium transition-all duration-300 hover:bg-white hover:text-black ml-10"
+            className="font bg-black text-white py-4 px-10 border border-white text-lg md:text-xl font-medium transition-all duration-300 hover:bg-white hover:text-black ml-10"
           >
             Register Now
           </motion.button>
@@ -83,8 +96,8 @@ export default function Hero() {
           <ModelViewer />
         </motion.div>
       </motion.div>
-              <div className="absolute bottom-5 left-5 text-white text-sm">
-          <span className="font-bold text-lg">01</span> / 05
+              <div className="absolute bottom-5 left-5 text-white text-xl font">
+          <span className="font-bold text-4xl">01</span> / 06
         </div>
     </section>
   );

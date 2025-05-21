@@ -9,7 +9,7 @@ import BlurImageOverlay from '../components/images';
 
 const slides = [
   { text: 'Young', imgPath: '/young.jpg' },
-  { text: 'Biginner', imgPath: '/beginner.jpg' },
+  { text: 'Beginner', imgPath: '/beginner.jpg' },
   { text: 'Expert', imgPath: '/expert.jpg' },
   { text: 'Prepare', imgPath: '/prepare.jpg' },
   { text: 'Your', imgPath: '/your.jpg' },

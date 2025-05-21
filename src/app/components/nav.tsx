@@ -4,13 +4,13 @@ import Link from "next/link";
 import "../globals.css";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+export default function Nav() {
   const pathname = usePathname();
 
 
   const navItems = [
     { name: "Home", href: "/home" },
-    { name: "About Polymaze", href: "/polymaze" },
+    { name: "Polymaze", href: "/polymaze" },
     { name: "Participate", href: "/participate" },
     { name: "Testimonies", href: "/testimonies" },
     { name: "FAQ", href: "/faq" },
@@ -49,10 +49,6 @@ export default function Navbar() {
 
       {/* Mobile Top Navbar */}
       <div className="md:hidden fixed top-0 left-0 right-0 w-full z-50 bg-black/80 backdrop-blur-sm px-4 py-3">
-        <div className="flex justify-between items-center text-white">
-          <span className="font-bold text-lg">Polymaze</span>
-          {/* Optional Hamburger for future dropdown */}
-        </div>
 
         <div className="mt-3 flex flex-wrap gap-4 justify-center items-center">
           {navItems.map((item) => {

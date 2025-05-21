@@ -338,13 +338,14 @@ body {
 /* Optional enhancements */
 .navLin span {
   transition: all 0.3s ease;
+    font-family: "Orbitron";
+
 }
 
 .navLin:hover span {
   transform: scale(1.25);
 }
 
-.font{
+.font, a{
   font-family: "Orbitron";
-  font-weight: 900;
 }
