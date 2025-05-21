@@ -30,7 +30,7 @@ export default function Navbar() {
             return (
               <Link href={item.href} key={item.name} className="navLin relative group flex items-center space-x-4">
                 <span
-                  className={`text-sm transition-all ${
+                  className={`text-xl transition-all ${
                     isActive ? "text-white font-semibold" : "text-white/60 group-hover:text-white"
                   }`}
                 >

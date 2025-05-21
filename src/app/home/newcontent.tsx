@@ -16,9 +16,9 @@ export default function Hero() {
         className="w-full md:w-[60%] bg-black/80 text-white flex flex-col justify-center px-10 md:px-20 py-10 relative z-0"
       >
         <Image
-          src="/logo.png"
+          src="/logo1.png"
           alt="Polymaze Logo"
-          width={300}
+          width={500}
           height={100}
           className="mb-10"
         />
@@ -36,14 +36,14 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="mb-4">
-          <p className="uppercase text-white font-bold">Polymaze is here!</p>
-          <p className="text-white/80 text-sm">
+        <div className="mb-4 ml-10">
+          <p className="uppercase text-white font-bold text-3xl">Polymaze is here!</p>
+          <p className="text-white/80  text-2xl">
             To throw down the gauntlet for robotics enthusiasts.
           </p>
         </div>
 
-        <p className="text-sm text-white/70 max-w-md mb-8">
+        <p className=" text-white/70 max-w-md mb-8 ml-10 text-xl" >
           Test your skills in mechanics, electronics, robotics and automatics to
           design and build a robot that can take on a challenging maze competed
           with intricate pathways and unexpected turns.
@@ -56,7 +56,7 @@ export default function Hero() {
               boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="bg-black text-white py-4 px-10 border border-white text-lg md:text-xl font-medium transition-all duration-300 hover:bg-white hover:text-black"
+            className="bg-black text-white py-4 px-10 border border-white text-lg md:text-xl font-medium transition-all duration-300 hover:bg-white hover:text-black ml-10"
           >
             Register Now
           </motion.button>
