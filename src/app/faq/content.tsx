@@ -46,7 +46,7 @@ export default function Content() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="absolute inset-0 w-full h-full"
+      className="absolute inset-0 w-full h-full mt-30 md:mt-0"
     >
       {/* Background image */}
       {/* <Image

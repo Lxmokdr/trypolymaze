@@ -5,16 +5,22 @@ import Image from 'next/image';
 
 export default function Content() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative min-h-screen w-full overflow-hidden mt-30 md:mt-0">
       {/* Fixed full-screen background */}
-      <Image
+      {/* <Image
         src="/bgmaze.png"
         alt="Background Maze"
         fill
         className="object-cover opacity-5 z-0"
         priority
-      />
-
+      /> */}
+              <Image
+                                src="/logo1.png"
+                                alt="Polymaze Logo"
+                                width={300}
+                                height={100}
+                                className="mb-10"
+                              />
       {/* Scrollable content */}
       <div className="relative z-10 flex flex-col px-8 w-full max-w-7xl pt-24 pl-20 mx-auto">
           <div className="flex flex-row items-start pb-15">
