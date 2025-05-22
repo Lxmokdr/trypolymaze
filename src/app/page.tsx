@@ -1,4 +1,5 @@
 import About from "./aboutus/page";
+import Bottom from "./components/bottom";
 import Nav from "./components/nav";
 import FAQ from "./faq/page";
 import Homepagee from "./home/page";
@@ -16,6 +17,7 @@ export default function Home() {
       <Testimonies/>
       <FAQ/>
       <About/>
+      <Bottom/>
     </div>
   );
 }
