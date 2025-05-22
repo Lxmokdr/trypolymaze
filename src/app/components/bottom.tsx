@@ -64,7 +64,7 @@ export default function Bottom() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white rounded-full p-1 hover:opacity-80 transition-opacity" // Smaller padding
+              className="bg-white rounded-full hover:opacity-80 transition-opacity" // Smaller padding
             >
               <Image
                 src={social.src}
