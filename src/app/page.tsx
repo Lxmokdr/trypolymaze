@@ -9,15 +9,21 @@ import Testimonies from "./testimonies/page";
 
 export default function Home() {
   return (
-    <div className="bg-[#0D0D0D]">
-      <Nav />
+
+    <div className="flex flex-col min-h-screen">
+      {/* Main content fills available space */}
+      <main className="flex-grow">
+<Nav />
       <Homepagee/>
       < Polymaze/>
       <Participate/>
       <Testimonies/>
       <FAQ/>
-      <About/>
-      <Bottom/>
+      <About/>      </main>
+
+      {/* Footer sticks to bottom even on short pages */}
+      <Bottom />
     </div>
+
   );
 }
