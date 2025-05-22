@@ -7,7 +7,7 @@ import ModelViewer from "./3d";
 
 export default function Homepage() {
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div className="absolute inset-0 w-full h-screen">
       {/* Background image with subtle animation */}
       <motion.div
         initial={{ opacity: 0 }}

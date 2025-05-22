@@ -1,6 +1,6 @@
 export default function Content() {
     return (
-      <div id="participate" className=" w-full h-full mt-30 md:mt-0">
+      <div id="participate" className=" w-full h-screen mt-30 md:mt-0">
         {/* Centered content */}
         <div className=" flex flex-col items-start justify-start gap-6 px-4 text-center top-45 pl-10 lg:w-9/10 left-1/20 pr-[5%] ">
                 <div className="flex flex-row items-start ml-10">

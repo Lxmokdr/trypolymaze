@@ -35,9 +35,11 @@ export default function ImageSwiper() {
         loop={true}
         modules={[Pagination, Autoplay]}
         breakpoints={{
-          640: { slidesPerView: 1.2 },
+          480: { slidesPerView: 1.1 },
+          640: { slidesPerView: 1.3 },
           768: { slidesPerView: 2 },
-          1024: { slidesPerView: 4 },
+          1024: { slidesPerView: 3 },
+          1280: { slidesPerView: 3},
         }}
         className="w-[80%] ml-0 self-start"
       >
