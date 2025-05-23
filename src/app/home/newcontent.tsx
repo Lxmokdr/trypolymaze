@@ -20,7 +20,7 @@ export default function Hero() {
           alt="Polymaze Logo"
           width={500}
           height={100}
-          className="mb-6 w-auto h-auto max-w-[300px] md:max-w-[400px]"
+          className="mb-10 w-auto h-auto max-w-[300px] md:max-w-[400px]"
         />
 
         {/* Mobile Model Viewer (below logo) */}
@@ -36,10 +36,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="flex flex-row items-start ml-0">
-          <div className="bg-white w-1.5 h-auto self-stretch mr-3"></div>
+        <div className="flex flex-row items-start ml-4 sm:ml-10">
+          <div className="bg-white w-1.5 h-auto self-stretch mr-3 sm:mr-4"></div>
           <div className="text-start">
-            <p className="block text-4xl md:text-5xl font-bold text-white font-[Orbitron]">
+            <p className="uppercase text-white text-2xl sm:text-3xl font-bold">
               Polymaze is here!
             </p>
             <p className="text-white/80 text-xl sm:text-2xl">
@@ -49,8 +49,8 @@ export default function Hero() {
         </div>
 
         <div className="mb-4 ml-4 sm:ml-10"></div>
-        
-        <p className="text-white/70 text-lg md:text-2xl max-w-3xl text-start">
+
+        <p className="text-white/70 max-w-md mb-8 ml-4 sm:ml-10 text-lg sm:text-xl">
           Test your skills in mechanics, electronics, robotics and automatics to
           design and build a robot that can take on a challenging maze competed
           with intricate pathways and unexpected turns.
@@ -63,7 +63,7 @@ export default function Hero() {
               boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
             }}
             whileTap={{ scale: 0.98 }}
-            className="font-semibold bg-black text-white py-3 px-8 sm:py-4 sm:px-10 border border-white text-base sm:text-lg md:text-xl transition-all duration-300 hover:bg-white hover:text-black ml-4 sm:ml-10 mt-4"
+            className="font-semibold bg-black text-white py-3 px-8 sm:py-4 sm:px-10 border border-white text-base sm:text-lg md:text-xl transition-all duration-300 hover:bg-white hover:text-black ml-4 sm:ml-10"
           >
             Register Now
           </motion.button>
