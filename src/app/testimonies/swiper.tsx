@@ -11,14 +11,9 @@ import Comment from '../components/comments';
 const slides = [
   { name: 'Youssra ghemari', image: '/young.jpg', comment: 'Polymaze was a truly unforgettable experience. From the incredible guidance we received throughout the robot-building journey to the excitement and energy of the ddya, every moment was special. The Polymaze bot was the first robot I ever built. It wasn’t just a project; it was the beginning of a journey I’ll never forget..' },
   { name: 'Lyna bouchama', image: '/young.jpg', comment: 'Polymaze was the best experience for 2024, that marked my year and all my years as student.It was an experience full of good memories meme si on a vécu des moments de stress.I would say gestion de stress as first thing XD especially when you don’t start working early and u have 0 experience . It was a good occasion too to link between what we learned at school comme des notions théoriques , and la pratique in this funny and competitive way. ' },
-  { name: 'Mohamed morsli', image: '/young.jpg', comment: 'Hope is the key to survive in a Maze ! in simple words, Polymaze was unexpectedly a wonderful experiance.' },
-  { name: 'Lina', image: '/young.jpg', comment: 'Very intuitive and useful.hreherfberhjbervhrvruvhbrrhvjrhgirgbrughghrviur' },
-  { name: 'Youssef', image: '/young.jpg', comment: 'I enjoyed using this service.fjriegrubgrghrbgryuhghrtghrjbgrigrbgrhjbrgruhbgrhgjrkgbr' },
-  { name: 'Sana', image: '/young.jpg', comment: 'Amazing work!rtgkjgnueigjbregherjbgreghtrjbgrkgnlelkg' },
-  { name: 'Khaled', image: '/young.jpg', comment: 'Clean and fast UI.rgkrengjirgnjregiuzgrggtrehetgtrgtrehrtgthtrhrgrhrth' },
-  { name: 'Nour', image: '/young.jpg', comment: 'Great customer support.tghrtgerggrtgrtgrkgnjgbrgejbjgbrjgrgbirjekbgrjgkr' },
-  { name: 'Ali', image: '/young.jpg', comment: 'I will recommend this to friends.rgnrjhebrgierhgbhegbjerghhgehebgerhjgbeghebfhdvjbfvhjgvbughberghj' },
-  { name: 'Rania', image: '/young.jpg', comment: 'This saved me a lot of time.ergjjergberjgerbfhzjrbfrehebgrthbrghrvbgurhvrbghervguerhjegguhegbehrgberhjgerughj' },
+  { name: 'Mohamed morsli', image: '/young.jpg', comment: 'Hope is the key to survive in a Maze ! in simple words, Polymaze was unexpectedly a wonderful experiance.ghkjgjhjgfhjfggjhgytjytjytjytjytjtjtjytyhtytythtjytytrtrtrtruiigjhjhjhjhjhjhjhffuoiiiokkkkkkkghggfhhfghthtrtrdfdfdttth!uiihjhjbnvgffsdse"zsesdtfygyuuyuyihhnopk,kiuyyfdcfdfdsd' },
+  { name: 'Khaled', image: '/young.jpg', comment: 'Polymaze was the first robotics competition I ever participated in, and it marked the beginning of my journey in this field. As a beginner, it was a challenging yet incredibly rewarding experience that sparked my passion for robotics. Since then, I’ve grown a lot, taken part in other competitions, and even achieved some wins. Polymaze was truly the foundation that set everything in motion.' },
+  { name: 'Omar', image: '/young.jpg', comment: 'Polymaze was a great experience for me as a beginner passionate about robotics. It ignited my interest in the field and gave me my first hands-on exposure to hardware implementation. The combination of challenges and excitement especially during the D-Day competition made it an unforgettable experience.' },
 ];
 
 export default function ImageSwiper() {
