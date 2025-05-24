@@ -10,7 +10,7 @@ import Testimonies from "./testimonies/page";
 export default function Home() {
   return (
 
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#000000]">
       {/* Main content fills available space */}
       <main className="flex-grow">
 <Nav />

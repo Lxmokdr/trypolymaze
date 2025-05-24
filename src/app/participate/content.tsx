@@ -1,7 +1,7 @@
 export default function Content() {
     return (
       <div id="participate" className="w-full min-h-screen relative">
-        <div className="flex flex-col items-start justify-start gap-6 px-4 text-center pl-10 lg:w-9/10 left-1/20 pr-[5%] pt-24 pb-32">
+        <div className="flex flex-col items-start justify-start gap-6 px-4 text-center sm:pl-10 lg:w-9/10 sm:pr-[5%] pt-24 pb-32">
           <div className="flex flex-row items-start ml-10">
             <div className="flex flex-row items-start">
               <div className="bg-white w-2 h-30 mr-4"></div>

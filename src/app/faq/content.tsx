@@ -49,7 +49,7 @@ export default function Content() {
     >
 
       {/* Centered content */}
-      <div id="faq" className="absolute-content h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 pl-20 lg:w-11/12 overflow-y-auto pr-[10%] ">
+      <div id="faq" className="absolute-content h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 pl-20 lg:w-11/12 overflow-y-auto pr-[10%] bg-[#000000]">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

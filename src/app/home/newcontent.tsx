@@ -7,13 +7,13 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0">
+    <section id="home" className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0 bg-[#000000]">
       {/* Left Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-[60%] bg-[#0D0D0D] text-white flex flex-col justify-center px-6 sm:px-10 md:px-20 py-10 relative z-10"
+        className="w-full md:w-[60%]  text-white flex flex-col justify-center px-6 sm:px-10 md:px-20 py-10 relative z-10"
       >
         <Image
           src="/logo.png"
@@ -36,13 +36,13 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="flex flex-row items-start ml-4 sm:ml-10">
+        <div className="flex flex-row items-start">
           <div className="bg-white w-1.5 h-auto self-stretch mr-3 sm:mr-4"></div>
-          <div className="text-start">
-            <p className="uppercase text-white text-2xl sm:text-3xl font-bold">
+          <div className="flex flex-col items-start">
+            <p className="uppercase text-white text-4xl sm:text-5xl font-bold font">
               Polymaze is here!
             </p>
-            <p className="text-white/80 text-xl sm:text-2xl">
+            <p className="text-white/80 text-xl sm:text-2xl mt-2">
               To throw down the gauntlet for robotics enthusiasts.
             </p>
           </div>
