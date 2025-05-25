@@ -47,27 +47,25 @@ export default function Content() {
       transition={{ duration: 0.8 }}
       className="w-full h-full "
     >
-
       {/* Centered content */}
-      <div id="faq" className="absolute-content h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 pl-20 lg:w-11/12 overflow-y-auto pr-[10%] bg-[#000000]">
+      <div
+        id="faq"
+        className="absolute-content min-h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 sm:pl-20 lg:w-11/12 sm:pr-[10%] bg-[#000000] overflow-x-hidden -mt-52"
+      >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl font-bold text-white  mb-6"
+          className="text-5xl font-bold text-white mb-6"
         >
           <div className="flex flex-row items-start pb-15">
-            {/* White vertical rectangle */}
             <div className="bg-white w-2 h-16 mr-4"></div>
-
-            {/* Title and Subtitle */}
             <div className="text-start">
-              <h1 className="text-5xl text-white font-bold font">
+              <h1 className="text-3xl md:text-5xl text-white font-bold font">
                 Frequently Asked Questions
               </h1>
             </div>
           </div>
-
         </motion.h1>
 
         <motion.div
@@ -117,10 +115,9 @@ export default function Content() {
             </motion.div>
           ))}
         </motion.div>
-
-
       </div>
-            {/* Custom scrollbar hiding */}
+
+      {/* Custom scrollbar hiding */}
       <style jsx>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;

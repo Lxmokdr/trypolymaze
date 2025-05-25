@@ -7,13 +7,16 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0 bg-[#000000]">
+    <section
+      id="home"
+      className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0 bg-[#000000]"
+    >
       {/* Left Section */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-[60%]  text-white flex flex-col justify-center px-6 sm:px-10 md:px-20 py-10 relative z-10"
+        className="w-full md:w-[60%] text-white flex flex-col justify-center px-4 sm:pl-20 relative z-10 sm:mr-[15%]"
       >
         <Image
           src="/logo.png"
@@ -78,9 +81,7 @@ export default function Hero() {
           transition={{ delay: 0.2, duration: 1 }}
           className="
             absolute
-
             rounded-2xl
-
             z-10
             pointer-events-auto
             h-[50vh]
