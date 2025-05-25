@@ -4,8 +4,8 @@ import ImageSwiper from "./swiper";
 
 export default function Content() {
   return (
-    <div id="testimonies" className="w-full min-h-screen relative bg-[#000000]">
-      <div className="content-container flex flex-col px-4 lg:w-11/12 sm:pl-20 pt-24 pb-32">
+    <div id="testimonies" className="w-full min-h-screen relative bg-[#000000] md:mt-40">
+      <div className="content-container flex flex-col px-4 lg:w-11/12 sm:pl-20">
       <div className="flex flex-row items-start pb-15"></div>
         <div className="flex flex-row items-start mb-10">
           <div className="bg-white w-2 h-16 mr-4"></div>

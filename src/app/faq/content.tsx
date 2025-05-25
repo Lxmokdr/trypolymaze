@@ -50,17 +50,18 @@ export default function Content() {
       {/* Centered content */}
       <div
         id="faq"
-        className="absolute-content min-h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 sm:pl-20 lg:w-11/12 sm:pr-[10%] bg-[#000000] overflow-x-hidden -mt-52"
+        className="absolute-content min-h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 sm:pl-20 lg:w-11/12 sm:pr-[10%] bg-[#000000] overflow-x-hidden "
       >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl font-bold text-white mb-6">
-          <div className="flex flex-row items-start pb-15">
-            <div className="bg-white w-2 h-16 mr-4"></div>
+          className="text-5xl font-bold text-white mb-6"
+>
+          <div className="flex flex-row items-start pb-5">
+            <div className="bg-white w-2 h-16 mr-4 md:mt-30 "></div>
             <div className="text-start">
-              <h1 className="text-3xl md:text-5xl text-white font-bold font">
+              <h1 className="text-3xl md:text-5xl md:mt-32 text-white font-bold font ms:-mt-30">
                 Frequently Asked Questions
               </h1>
             </div>
