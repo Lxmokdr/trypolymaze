@@ -56,8 +56,7 @@ export default function Content() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-5xl font-bold text-white mb-6"
-        >
+          className="text-5xl font-bold text-white mb-6">
           <div className="flex flex-row items-start pb-15">
             <div className="bg-white w-2 h-16 mr-4"></div>
             <div className="text-start">
