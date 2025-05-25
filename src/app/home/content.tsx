@@ -25,9 +25,7 @@ export default function Homepage() {
       </motion.div>
 
       {/* Left-aligned content with padding and margin like your example */}
-      <div
-        className="content-container absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 text-left sm:mr-[15%] sm:pl-20"
-      >
+      <div className="content-container absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 text-left sm:mr-[15%] sm:pl-20">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -102,7 +100,7 @@ export default function Homepage() {
           transition={{ duration: 0.5, delay: 2.2 }}
           className="flex justify-start gap-6 mt-2 flex-wrap"
         >
-          <Link href="/participate">
+          <Link href="/register">
             <motion.button
               whileHover={{
                 scale: 1.05,
