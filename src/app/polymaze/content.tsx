@@ -2,7 +2,7 @@ import ImageSwiper from "./swiper";
 
 export default function Content() {
   return (
-    <div id="polymaze" className="relative w-full h-screen mt-30 md:mt-10">
+    <div id="polymaze" className="relative w-full h-screen mt-30 md:mt-0 bg-[#0D0D0D]">
 
 
       {/* Content */}

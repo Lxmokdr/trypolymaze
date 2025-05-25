@@ -50,7 +50,7 @@ export default function Content() {
       {/* Centered content */}
       <div
         id="faq"
-        className="absolute-content min-h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 sm:pl-20 lg:w-11/12 sm:pr-[10%] bg-[#000000] overflow-x-hidden "
+        className="absolute-content min-h-screen z-10 flex flex-col items-start justify-start gap-6 px-4 sm:pl-20 lg:w-11/12 sm:pr-[10%] bg-[#0D0D0D] overflow-x-hidden "
       >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

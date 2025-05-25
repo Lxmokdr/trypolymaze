@@ -4,7 +4,7 @@ import CardStack from './cards';
 
 export default function Content() {
   return (
-    <div id='aboutus' className="min-h-screen w-full relative bg-[#000000]">
+    <div id='aboutus' className="min-h-screen w-full relative bg-[#0D0D0D]">
       <div className="flex flex-col px-4 sm:pl-20 w-full pt-24 pb-32 mx-auto sm:pr-[15%] md:mt-20">
         <div className="flex flex-row items-start pb-15">
           <div className="bg-white w-2 h-16 mr-4"></div>
