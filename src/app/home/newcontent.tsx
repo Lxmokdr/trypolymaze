@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col md:flex-row h-screen w-full overflow-visible mt-30 md:mt-0 bg-[#000000]"
+      className="relative flex flex-col md:flex-row h-screen w-full overflow-visible -ml-6 mt-30 md:-ml-10 bg-[#0D0D0D]"
     >
       {/* Left Section */}
       <motion.div
@@ -40,9 +40,9 @@ export default function Hero() {
         </div>
 
         <div className="flex flex-row items-start ml-4 sm:ml-10">
-          <div className="bg-white w-1.5 h-auto self-stretch mr-3 sm:mr-4"></div>
+          <div className="bg-white w-2 h-auto self-stretch mr-3 sm:mr-4"></div>
           <div className="flex flex-col items-start">
-            <p className="uppercase text-white text-4xl sm:text-5xl font-bold font">
+            <p className="uppercase text-white text-3xl sm:text-5xl font-bold font">
               Polymaze is here!
             </p>
             <p className="text-white/80 text-xl sm:text-2xl mt-2">
