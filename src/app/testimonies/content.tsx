@@ -9,7 +9,7 @@ export default function Content() {
         <div className="flex flex-row items-start mb-10">
           <div className="bg-white w-2 h-16 mr-4"></div>
           <div className="text-start">
-            <h1 className="text-5xl text-white font-bold font">Testimonies</h1>
+            <h1 className="text-4xl md:text-5xl text-white font-bold font">Testimonies</h1>
           </div>
         </div>
         <div className="relative z-10">
