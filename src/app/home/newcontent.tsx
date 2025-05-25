@@ -16,7 +16,7 @@ export default function Hero() {
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className="w-full md:w-[60%] text-white flex flex-col justify-center px-4 sm:pl-20 relative z-10 sm:mr-[15%]"
+        className="w-full md:w-[60%] text-white flex flex-col justify-center px-6 sm:px-10 md:px-20 relative z-10 sm:mr-[15%]"
       >
         <Image
           src="/logo.png"
@@ -39,7 +39,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="flex flex-row items-start">
+        <div className="flex flex-row items-start ml-4 sm:ml-10">
           <div className="bg-white w-1.5 h-auto self-stretch mr-3 sm:mr-4"></div>
           <div className="flex flex-col items-start">
             <p className="uppercase text-white text-4xl sm:text-5xl font-bold font">

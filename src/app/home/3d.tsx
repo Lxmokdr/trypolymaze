@@ -29,7 +29,7 @@ const ModelViewer = () => {
       <div className="model-container">
         {/* Option: Adjust camera FOV or Z position for a different "zoom" effect */}
         {/* e.g., <Canvas camera={{ position: [0, 1, 4.5], fov: 55 }}> */}
-        <Canvas camera={{ position: [0, 1, 3], fov: 60 }}> {/* Current default */}
+        <Canvas camera={{ position: [2, 3, 4], fov: 40 }}> {/* Current default */}
           <ambientLight intensity={1.5} />
           <directionalLight position={[0, 3, 10]} intensity={2} />
           <Suspense fallback={null}>

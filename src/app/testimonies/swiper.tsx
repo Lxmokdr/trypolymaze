@@ -18,7 +18,7 @@ const slides = [
 
 export default function ImageSwiper() {
   return (
-    <div className="w-full px-4 flex justify-start">
+    <div className="w-full px-4 flex justify-start md:mr-50">
       <Swiper
         slidesPerView={1}
         spaceBetween={20}
