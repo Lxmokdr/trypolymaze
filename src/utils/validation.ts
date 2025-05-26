@@ -16,6 +16,15 @@ export interface dataRegistrationProps {
   phone: string;
   wilaya: string;
   dob: string;
+  university: string;
+  fos: string;
+  yos: string;
+  programmingSkill: string;
+  electronicsSkill: string;
+  mechanicalSkill: string;
+  anythingElse: string;
+  motivation: string;
+  code: string;
 }
 
 export const validateRegistrationForm = (
@@ -42,7 +51,10 @@ export const validateRegistrationForm = (
 
   // Check required fields
   requiredFields.forEach(({ field, label }) => {
-    if (!formData[field] || (typeof formData[field] === 'string' && formData[field].trim() === "")) {
+    if (
+      !formData[field] ||
+      (typeof formData[field] === "string" && formData[field].trim() === "")
+    ) {
       errors.push({
         field,
         message: `${label} is required`,

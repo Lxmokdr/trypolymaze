@@ -59,7 +59,7 @@ export default function Hero() {
           with intricate pathways and unexpected turns.
         </p>
 
-        <Link href="/participate">
+        <Link href="/register">
           <motion.button
             whileHover={{
               scale: 1.05,

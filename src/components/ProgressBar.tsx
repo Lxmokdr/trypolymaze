@@ -77,6 +77,21 @@ export default function ProgressBar({
           >
             <i className="fa-solid fa-trophy text-lg text-black"></i>
           </div>
+          <span className="text-sm mt-1">Skills</span>
+        </div>
+
+        <div
+          className={`flex flex-col items-center ${
+            currentStep >= 4 ? "text-white" : "text-gray-500"
+          }`}
+        >
+          <div
+            className={`w-10 h-10 rounded-full flex items-center justify-center ${
+              currentStep >= 4 ? "bg-white" : "bg-gray-700"
+            }`}
+          >
+            <i className="fa-solid fa-trophy text-lg text-black"></i>
+          </div>
           <span className="text-sm mt-1">Complete</span>
         </div>
       </div>

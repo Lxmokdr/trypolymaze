@@ -44,7 +44,7 @@ export default function Homepage() {
             transition={{ duration: 0.7, delay: 0.8 }}
           >
             <h1 className="text-4xl md:text-7xl font-bold text-white mb-2 tracking-wider">
-              POLYMAZE
+              Polymaze
             </h1>
             <motion.div
               initial={{ width: "0%" }}

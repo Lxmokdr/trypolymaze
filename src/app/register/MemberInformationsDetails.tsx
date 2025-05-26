@@ -15,6 +15,9 @@ export interface MemberInformationsDetailsProps {
     phone: string;
     wilaya: string;
     dob: string;
+    university: string;
+    fos: string;
+    yos: string;
   };
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -70,22 +73,54 @@ export function MemberInformationsDetails({
       />
 
       <FormInput
-        id="wilaya"
-        name="wilaya"
-        label="Wilaya"
-        type="select"
-        value={formData.wilaya}
-        onChange={handleInputChange}
-        placeholder="Enter your wilaya"
-        required
-      />
-
-      <FormInput
         id="dob"
         name="dob"
         label="Date of Birth"
         type="date"
         value={formData.dob as string}
+        onChange={handleInputChange}
+        required
+      />
+
+      <FormInput
+        id="wilaya"
+        name="wilaya"
+        label="Wilaya"
+        type="text"
+        placeholder="Enter your University"
+        value={formData.university as string}
+        onChange={handleInputChange}
+        required
+      />
+
+      <FormInput
+        id="university"
+        name="university"
+        label="University"
+        type="text"
+        placeholder="Enter your University"
+        value={formData.university as string}
+        onChange={handleInputChange}
+        required
+      />
+      <FormInput
+        id="fos"
+        name="fos"
+        label="Field of Study"
+        type="select"
+        value={formData.fos as string}
+        onChange={handleInputChange}
+        placeholder="Enter your Field of Study"
+        required
+      />
+
+      <FormInput
+        id="yos"
+        name="yos"
+        label="Year of Study"
+        placeholder="Enter the Year of Study"
+        type="text"
+        value={formData.yos as string}
         onChange={handleInputChange}
         required
       />

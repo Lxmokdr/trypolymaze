@@ -29,15 +29,43 @@ export default function Content() {
     email: "",
     firstName: "",
     lastName: "",
+    programmingSkill: "Beginner",
+    electronicsSkill: "Beginner",
+    mechanicalSkill: "Beginner",
     phone: "",
     wilaya: "",
     dob: "",
+    university: "",
+    fos: "",
+    yos: "",
+    motivation: "",
+    anythingElse: "",
+    code: "",
   });
 
+  /**
+   * Registers a new team and its team leader in the database.
+   *
+   * @param {dataRegistrationProps} formData - The registration form data,
+   * including team and participant details.
+   *
+   * The function performs the following actions:
+   * - Sets the loading state to true.
+   * - Inserts a new team into the "teams" table, marking it as solo if applicable.
+   * - If the team insertion is successful, inserts the team leader into the "participants" table.
+   * - Sets the registered team ID if both insertions succeed.
+   * - Handles errors during the registration process, updating the error state and stopping the loading state.
+   * - Advances to the next step upon successful registration.
+   */
+
+  /*******  44cc980f-2b47-49f5-bf6d-53334721484e  *******/
   const storeTeamRegistration = async (formData: dataRegistrationProps) => {
+    setIsLoading(true);
+    setError("");
+
     try {
-      setIsLoading(true);
-      const { data, error } = await supabase
+      // Insert the team record
+      const { data: teamData, error: teamError } = await supabase
         .from("teams")
         .insert([
           {
@@ -45,43 +73,61 @@ export default function Content() {
             is_solo: formData.teamMembers === "solo",
           },
         ])
-        .select("id");
+        .select("id, code");
 
-      if (data) {
-        const teamId = data[0].id as string;
-
-        await supabase
-          .from("participants")
-          .insert([
-            {
-              first_name: formData.firstName,
-              last_name: formData.lastName,
-              birth_date: formData.dob,
-              email: formData.email,
-              phone_number: formData.phone,
-              wilaya: formData.wilaya,
-              team_id: teamId,
-            },
-          ])
-          .select();
-
-        // Save the team ID for the thank you page
-        setRegisteredTeamId(teamId);
-      }
-
-      if (error) {
-        setError(
-          `An error occurred while registering the team, please try again`
+      if (teamError || !teamData || teamData.length === 0) {
+        throw new Error(
+          teamError?.message || "Failed to create team. Please try again."
         );
-      } else {
-        // Move to the thank you step
-        nextStep();
       }
-      setIsLoading(false);
-      setError("");
+
+      const teamId = teamData[0].id as string;
+
+      // Insert the participant record linked to the team
+      const { data: participantData, error: participantError } = await supabase
+        .from("participants")
+        .insert([
+          {
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            birth_date: formData.dob,
+            email: formData.email,
+            phone_number: formData.phone,
+            wilaya: formData.wilaya,
+            team_id: teamId,
+            university: formData.university,
+            field_of_study: formData.fos,
+            year_of_study: formData.yos,
+            motivation: formData.motivation,
+            anything_else: formData.anythingElse,
+            programming_skill: formData.programmingSkill,
+            electronics_skill: formData.electronicsSkill,
+            mechanical_skill: formData.mechanicalSkill,
+          },
+        ])
+        .select();
+
+      if (
+        participantError ||
+        !participantData ||
+        participantData.length === 0
+      ) {
+        throw new Error(
+          participantError?.message ||
+            "Failed to register participant. Please try again."
+        );
+      }
+
+      // Save the team code for later use (e.g., thank you page)
+      setRegisteredTeamId(teamData[0].code);
+
+      // Move to the next step
+      nextStep();
     } catch (error) {
+      setError("An error occurred while registering the team");
+      console.error(error);
+    } finally {
       setIsLoading(false);
-      setError(`An error occurred while registering the team: ${error}.`);
     }
   };
 
@@ -92,8 +138,8 @@ export default function Content() {
       // First check if the team exists and get its details
       const { data: teamData, error: teamError } = await supabase
         .from("teams")
-        .select("is_solo, participants(*)")
-        .eq("id", formData.teamId)
+        .select("is_solo, participants(team_id), id")
+        .eq("code", formData.code)
         .single();
 
       if (teamError) {
@@ -114,6 +160,8 @@ export default function Content() {
         throw new Error("The team is already full (maximum 4 members)");
       }
 
+      const teamId = teamData.id;
+
       // Insert the new team member
       const { error: insertError } = await supabase
         .from("participants")
@@ -125,11 +173,12 @@ export default function Content() {
             email: formData.email,
             phone_number: formData.phone,
             wilaya: formData.wilaya,
-            team_id: formData.teamId,
+            team_id: teamId,
           },
         ]);
 
       if (insertError) {
+        console.error(insertError);
         throw new Error("Failed to register team member");
       }
 
@@ -261,8 +310,8 @@ export default function Content() {
               if (teamAction === "create" && formData.teamName.trim() === "") {
                 setError("Team Name is required.");
               } else {
-                if (teamAction === "join" && formData.teamId.trim() === "") {
-                  setError("Team ID is required.");
+                if (teamAction === "join" && formData.code.trim() === "") {
+                  setError("Team Code is required.");
                 } else {
                   setError("");
                   nextStep();
@@ -352,7 +401,7 @@ export default function Content() {
             )}
 
             {teamAction === "join" && (
-              <JoinTeam teamId={formData.teamId} onChange={handleInputChange} />
+              <JoinTeam code={formData.code} onChange={handleInputChange} />
             )}
           </Step>
 
@@ -361,18 +410,37 @@ export default function Content() {
             isActive={step === 2}
             stepNumber={2}
             onNext={() => {
-              // Validate required fields before submission
               if (
                 !formData.firstName ||
                 !formData.lastName ||
                 !formData.email ||
                 !formData.phone ||
                 !formData.wilaya ||
-                !formData.dob
+                !formData.dob ||
+                !formData.university ||
+                !formData.fos ||
+                !formData.yos
               ) {
                 setError("Please fill in all required fields");
                 return;
               }
+
+              nextStep();
+            }}
+            onPrevious={prevStep}
+            isLastStep={false}
+          >
+            <MemberInformationsDetails
+              formData={formData}
+              handleInputChange={handleInputChange}
+            />
+          </Step>
+          {/* Step 3: Motivation and skill Details */}
+
+          <Step
+            isActive={step === 3}
+            stepNumber={3}
+            onNext={() => {
               const reactEvent = {
                 preventDefault: () => {},
               } as React.FormEvent;
@@ -381,16 +449,129 @@ export default function Content() {
             onPrevious={prevStep}
             isLastStep={true}
           >
-            <MemberInformationsDetails
-              formData={formData}
-              handleInputChange={handleInputChange}
-            />
+            <div className="flex flex-col gap-8">
+              {/* Programming Skill */}
+              <div>
+                <label className="block text-white mb-2 font-medium">
+                  Rate your programming skill{" "}
+                  <span className="text-red-500">*</span>
+                </label>
+                {/* <label htmlFor={id} className="block text-white mb-2 font-medium">
+        {label} {required && <span className="text-red-500">*</span>}
+      </label>
+ */}
+                <div className="flex gap-4">
+                  {["Beginner", "Intermediate", "Advanced"].map((level) => (
+                    <RadioButton
+                      key={level}
+                      name="programmingSkill"
+                      value={level}
+                      checked={formData.programmingSkill === level}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          programmingSkill: e.target.value,
+                        })
+                      }
+                      label={level}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Electronics Skill */}
+              <div>
+                <label className="block text-white mb-2 font-medium">
+                  Rate your electronics skill{" "}
+                  <span className="text-red-500">*</span>
+                </label>
+
+                <div className="flex gap-4">
+                  {["Beginner", "Intermediate", "Advanced"].map((level) => (
+                    <RadioButton
+                      key={level}
+                      name="electronicsSkill"
+                      value={level}
+                      checked={formData.electronicsSkill === level}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          electronicsSkill: e.target.value,
+                        })
+                      }
+                      label={level}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Mechanical Design Skill */}
+              <div>
+                <label className="block text-white mb-2 font-medium">
+                  Rate your programming skill{" "}
+                  <span className="text-red-500">*</span>
+                </label>
+                <div className="flex gap-4">
+                  {["Beginner", "Intermediate", "Advanced"].map((level) => (
+                    <RadioButton
+                      key={level}
+                      name="mechanicalSkill"
+                      value={level}
+                      checked={formData.mechanicalSkill === level}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          mechanicalSkill: e.target.value,
+                        })
+                      }
+                      label={level}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-white mb-2 font-medium">
+                  {/* motivation*/}
+                  What motivated you to participate in POLYMAZE?
+                  <span className="text-red-500">*</span>
+                </label>
+                <Textarea
+                  className="bg-gray-800 border border-gray-700"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      motivation: e.target.value,
+                    })
+                  }
+                  placeholder="Write your Motivation here."
+                  required
+                />
+              </div>
+              <div>
+                <label className="block text-white mb-2 font-medium">
+                  {/* anything to add */}
+                  Is there anything else you would like to share or ask about
+                  the competition?
+                </label>
+
+                <Textarea
+                  className="bg-gray-800 border border-gray-700"
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      anythingElse: e.target.value,
+                    })
+                  }
+                  placeholder="Write your Motivation here."
+                />
+              </div>
+            </div>
           </Step>
 
           {/* Step 3: Thank You Page */}
           <Step
-            isActive={step === 3}
-            stepNumber={3}
+            isActive={step === 4}
+            stepNumber={4}
             isLastStep={false}
             hideNavigation={true}
           >
@@ -435,19 +616,19 @@ export default function Content() {
                 Thank you for registering for POLYMAZE. Your participation has
                 been confirmed.
               </motion.p>
-              {registeredTeamId && (
+              {teamAction === "create" && (
                 <motion.div
                   initial={{ y: 20, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                   className="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8 inline-block"
                 >
-                  <h3 className="text-gray-400 text-sm mb-2">YOUR TEAM ID</h3>
+                  <h3 className="text-gray-400 text-sm mb-2">YOUR TEAM Code</h3>
                   <p className="text-2xl font-mono font-bold text-white tracking-wider">
                     {registeredTeamId}
                   </p>
                   <p className="text-gray-400 text-xs mt-2">
-                    Keep this ID safe - you will need it for the competition
+                    Keep this code safe – you need to give it to your teammates
                   </p>
                 </motion.div>
               )}
@@ -481,7 +662,7 @@ export default function Content() {
                     // Clear error after 10 seconds
                     setTimeout(() => {
                       setError("");
-                    }, 1000);
+                    }, 7000);
                   }}
                 >
                   <ErrorAlert message={error} />
@@ -497,6 +678,7 @@ export default function Content() {
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 // Custom alert component that displays error messages
 const ErrorAlert = ({ message }: { message: string }) => {
