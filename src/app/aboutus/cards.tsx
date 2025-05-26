@@ -82,8 +82,8 @@ export default function CardStack() {
             </div>
 
             {/* Title and text */}
-            <h2 className="text-lg font-semibold mb-2">{card.title}</h2>
-            <p className="text-sm text-gray-300 mb-4 flex-1">{card.text}</p>
+            <h2 className="text-lg font-semibold mb-2 sm:text-l md:text-xl">{card.title}</h2>
+            <p className="text-lg text-gray-300 mb-4 flex-1 sm:text-l md:text-xl">{card.text}</p>
 
             {/* Bottom image */}
             <div className="mt-auto">

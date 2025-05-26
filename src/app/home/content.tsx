@@ -24,9 +24,9 @@ export default function Homepage() {
         />
       </motion.div>
 
-      {/* Left-aligned content with padding and margin like your example */}
-      <div className="content-container absolute inset-0 z-10 flex flex-col items-start justify-start gap-6 px-4 text-left sm:mr-[15%] sm:pl-20">
-        {/* Hero Section */}
+      {/* Centered content - Added mt-24 for top spacing */}
+      <div className="content-container absolute inset-0 z-10 flex flex-col items-center justify-center gap-6 px-4 text-center">
+        {/* Enhanced hero section with larger text and better animation */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -56,14 +56,14 @@ export default function Homepage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.8 }}
-              className="text-2xl md:text-6xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white"
+              className="text-3xl md:text-6xl font-bold text-white bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-white"
             >
               is here!
             </motion.h1>
           </motion.div>
         </motion.div>
 
-        {/* Description */}
+        {/* Description text */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -98,7 +98,7 @@ export default function Homepage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 2.2 }}
-          className="flex justify-start gap-6 mt-2 flex-wrap"
+          className="flex justify-center gap-6 mt-2 flex-wrap"
         >
           <Link href="/register">
             <motion.button
@@ -107,7 +107,7 @@ export default function Homepage() {
                 boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)",
               }}
               whileTap={{ scale: 0.98 }}
-              className="bg-white text-black py-5 px-12 rounded-xl text-xl md:text-2xl font-medium transition-all duration-300 hover:bg-gray-200 pt-4 "
+              className="bg-white text-black py-5 px-12 rounded-xl text-xl md:text-2xl font-medium transition-all duration-300 hover:bg-gray-200"
             >
               Register Now
             </motion.button>
@@ -125,9 +125,11 @@ export default function Homepage() {
             </motion.button>
           </Link>
         </motion.div>
-
         <ModelViewer />
       </div>
+
+      {/* Bottom section with logo */}
+      
     </div>
   );
 }

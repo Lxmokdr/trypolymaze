@@ -8,7 +8,6 @@ import Image from "next/image";
 const navItems = [
   { name: "Home", href: "#home" },
   { name: "POLYMAZE", href: "#polymaze" },
-  { name: "Participate", href: "#participate" },
   { name: "Testimonies", href: "#testimonies" },
   { name: "FAQ", href: "#faq" },
   { name: "About us", href: "#aboutus" },
@@ -55,7 +54,7 @@ export default function Nav() {
   return (
     <>
       {/* Desktop Vertical Navbar */}
-      <div className="hidden md:flex fixed right-10 top-0 h-screen w-60 z-50 items-center justify-center">
+      <div className="hidden md:flex fixed right-10 top-0 h-screen w-60 z-50 items-center justify-center -mr-20">
         <div className="relative flex flex-col items-end justify-center h-full space-y-10 text-white pr-6">
           <div className="absolute inset-y-0 right-4 w-px bg-white/80" />
           {navItems.map((item) => {
