@@ -33,7 +33,7 @@ export const validateRegistrationForm = (
   const errors: ValidationError[] = [];
 
   // Required fields validation
-  const requiredFields = [
+  const requiredFields: { field: keyof dataRegistrationProps; label: string }[] = [
     { field: "firstName", label: "First Name" },
     { field: "lastName", label: "Last Name" },
     { field: "email", label: "Email" },
@@ -51,10 +51,8 @@ export const validateRegistrationForm = (
 
   // Check required fields
   requiredFields.forEach(({ field, label }) => {
-    if (
-      !formData[field] ||
-      (typeof formData[field] === "string" && formData[field].trim() === "")
-    ) {
+    const value = formData[field];
+    if (!value || (typeof value === "string" && value.trim() === "")) {
       errors.push({
         field,
         message: `${label} is required`,
