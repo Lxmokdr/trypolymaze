@@ -4,8 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import ModelViewer from "./3d"; // Assuming 3d.js is in the same directory
 import { motion } from "framer-motion";
+import Countdown from "@/components/Countdown";
 
 export default function Hero() {
+  // Set your target date here (Year, Month (0-11), Day, Hour, Minute, Second)
+  const targetDate = new Date(2024, 11, 31, 0, 0, 0); // Example: December 31, 2024
+
   return (
     <section
       id="home"
@@ -58,6 +62,9 @@ export default function Hero() {
           design and build a robot that can take on a challenging maze competed
           with intricate pathways and unexpected turns.
         </p>
+
+        {/* Countdown Timer */}
+        <Countdown targetDate={targetDate} className="mb-8 ml-4 sm:ml-10" />
 
         <Link href="/register">
           <motion.button

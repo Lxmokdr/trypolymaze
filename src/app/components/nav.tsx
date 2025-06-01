@@ -87,12 +87,12 @@ export default function Nav() {
         </div>
       </div>
 
-      {/* Mobile Top Navbar */}
+      {/* Mobile Top Navbar - Adjust top position to account for banner */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`md:hidden fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
+        className={`md:hidden fixed top-10 left-0 right-0 w-full z-50 transition-all duration-300 ${
           scrolled
             ? "bg-black/90 backdrop-blur-md shadow-lg"
             : "bg-black/80 backdrop-blur-sm"

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import CountdownBanner from "@/components/CountdownBanner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Polymaze - Robotics Competition",
-  description: "Design and build a robot to conquer a complex maze filled with tricky paths and surprise turns.",
+  description:
+    "Design and build a robot to conquer a complex maze filled with tricky paths and surprise turns.",
 };
 
 export default function RootLayout({
@@ -24,8 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black min-h-screen overflow-x-hidden`}>
-        {children}
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black min-h-screen overflow-x-hidden`}
+      >
+        <CountdownBanner />
+        {/* Add padding-top to account for the fixed banner */}
+        <div className="pt-10">{children}</div>
       </body>
     </html>
   );

@@ -120,6 +120,21 @@ export default function Content() {
 
       // Save the team code for later use (e.g., thank you page)
       setRegisteredTeamId(teamData[0].code);
+      const response = await supabase.functions.invoke("send-email", {
+        body: JSON.stringify({
+          to: "3olaibi23@gmail.com", // or the email of the team/participant you want
+          subject: "Polymaze registration",
+          name: "formData.teamName",
+          code: "teamData[0].code", // use the actual generated code
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.error) {
+        console.log(response.error);
+        throw new Error(response.error.message);
+      }
 
       // Move to the next step
       nextStep();
